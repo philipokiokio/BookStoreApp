@@ -6,3 +6,6 @@ h1{
     width: auto;
     height: 300px;
 }
+a{
+    text-decoration: none;
+}

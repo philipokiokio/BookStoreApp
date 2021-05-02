@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # app
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
+    'books.apps.BooksConfig',
 
     # 3rd party django
     'crispy_forms',
