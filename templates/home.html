@@ -7,6 +7,9 @@
 
 {% block content %} 
 <h1>Homepage</h1>
+<form action="{% url 'search_results' %}" class="form-inline mt-2 mt-md-0" method="GET">
+    <input type="text" placeholder="Search" name="q" aria-label="Search" class="form-control mr-sm-2">
+</form>
 <img src="{% static 'images/dfp_31.jpg' %}" class="bookcover" alt="">
 {% if user.is_authenticated %}
 <p>   Hi {{ user.email }}! </p>
