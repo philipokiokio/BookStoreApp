@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
     'books.apps.BooksConfig',
+    'orders.apps.OrdersConfig',
 
     # 3rd party django
     'crispy_forms',
@@ -195,3 +196,8 @@ ACCOUNT_EMAIL_UNIQUE = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DEFAULT_FROM_EMAIL = 'Eddykane@djangobookstore.com'
+
+
+# STRIPE KEYS
+STRIPE_TEST_PUBLISHABLE_KEY = 'pk_test_51InpM3AfTwt3OLvv3AwI3vaDkVPTSaUpl5cBgCYf1841iRxzlRpEclPfUra458FMM1LMjmbj4A6c1d8aVf6GbXQx00sYBk7zW9'   #os.environ.get('STRIPE_TEST_PUBLISHABLE_KEY')
+STRIPE_TEST_SECRET_KEY = os.environ.get('STRIPE_TEST_SECRET_KEY')
