@@ -8,7 +8,7 @@ import stripe
 
 # Create your views here.
 stripe.api_key = settings.STRIPE_TEST_SECRET_KEY
-print('api-keuy',stripe.api_key)
+
 
 class OrdersPageView(TemplateView):
     template_name = 'orders/purchase.html'

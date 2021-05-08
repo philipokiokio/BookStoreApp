@@ -15,6 +15,7 @@ from pathlib import Path
 import os 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+ENVIRONMENT = os.environ.get('ENVIRONMENT', default='production')
 
 
 # Quick-start development settings - unsuitable for production
@@ -24,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('NEW_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(os.environ.get('DEBUG', default=0))
+DEBUG =  int(os.environ.get('DEBUG', default=0))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.herokuapp.com','local_host','127.0.0.1']
 
 
 # Application definition
@@ -46,10 +47,12 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
 
     # 3rd party django
+
     'crispy_forms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
 
 ]
 
@@ -64,7 +67,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
+CSRF_COOKIE_SECURE = True
 
 ROOT_URLCONF = 'bookstore_project.urls'
 
@@ -201,3 +206,19 @@ DEFAULT_FROM_EMAIL = 'Eddykane@djangobookstore.com'
 # STRIPE KEYS
 STRIPE_TEST_PUBLISHABLE_KEY = 'pk_test_51InpM3AfTwt3OLvv3AwI3vaDkVPTSaUpl5cBgCYf1841iRxzlRpEclPfUra458FMM1LMjmbj4A6c1d8aVf6GbXQx00sYBk7zW9'   #os.environ.get('STRIPE_TEST_PUBLISHABLE_KEY')
 STRIPE_TEST_SECRET_KEY = os.environ.get('STRIPE_TEST_SECRET_KEY')
+
+
+
+if ENVIRONMENT == 'production':
+    SECURE_BROWSER_XSS_FILTER = True
+    X_FRAME_OPTIONS = 'DENY'
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 3600
+    SECURE_HSTS_PRELOAD = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+
+
+
