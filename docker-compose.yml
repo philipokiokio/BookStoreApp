@@ -3,7 +3,7 @@ version: '3.7'
 services: 
   web:
     build: .
-    command: python /code/manage.py runserver 0.0.0.0:8000
+    command: gunicorn bookstore_project.wsgi -b 0.0.0.0:8000
     environment:
       - ENVIRONMENT=development 
       - NEW_SECRET_KEY=django-insecure-ynkh$$2u2&g(q#q=f)7t3r1r1+2qdoc2&o8z^^#9kd*xc9tg#6b

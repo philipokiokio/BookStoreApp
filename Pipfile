@@ -11,6 +11,9 @@ django-allauth = "*"
 pillow = "*"
 stripe = "*"
 django-debug-toolbar = "==2.0"
+whitenoise = "==5.0.1"
+gunicorn = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
